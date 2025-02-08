@@ -12,6 +12,12 @@ This project implements an **unsupervised machine learning pipeline** using **PC
 │   ├── pca_dbscan_model.py       # Model training script
 │   └── pca_dbscan_inference.py   # Inference script for predictions
 ├── pcs_dbscan_experiment.ipynb   # Jupyter notebook for PCA + DBSCAN experiments
+├── images/                       # Folder containing plots from experiments
+│   ├── customer_pca_dbscan.png
+│   ├── customer_pca.png
+│   ├── pca1.png
+│   ├── time_pca_dbscan.png
+│   └── vairance.png
 ├── cleaned_electricity_data.csv  # Preprocessed electricity consumption data
 ├── new_customer_data.csv         # New data for cluster predictions
 └── README.md                     # Project documentation
@@ -19,7 +25,32 @@ This project implements an **unsupervised machine learning pipeline** using **PC
 
 - **`src/` Folder:** Contains the main model and inference scripts.
 - **`pcs_dbscan_experiment.ipynb`:** Interactive notebook for experimentation with PCA and DBSCAN.
+- **`images/` Folder:** Stores visualization outputs from PCA and DBSCAN experiments.
 - **Data Files:** Include cleaned historical data and new data for predictions.
+
+---
+
+## 📈 **Experiment Results: PCA + DBSCAN Visualizations**
+
+### 1️⃣ PCA Visualization (Customer Data)
+![Customer PCA](images/customer_pca.png)
+*Figure 1: PCA Visualization showing customer consumption patterns in reduced dimensions.*
+
+### 2️⃣ PCA + DBSCAN Clustering (Customer Data)
+![Customer PCA + DBSCAN](images/customer_pca_dbscan.png)
+*Figure 2: DBSCAN clustering results applied on PCA-transformed customer data.*
+
+### 3️⃣ PCA Plot
+![PCA Plot](images/pca1.png)
+*Figure 3: Principal Component Analysis capturing key variance in the data.*
+
+### 4️⃣ Time-based PCA + DBSCAN
+![Time PCA + DBSCAN](images/time_pca_dbscan.png)
+*Figure 4: DBSCAN clustering on time-segmented PCA data, highlighting temporal patterns.*
+
+### 5️⃣ Variance Explained by Principal Components
+![Variance Explained](images/vairance.png)
+*Figure 5: Variance explained by each principal component, indicating the contribution to total data variance.*
 
 ---
 
@@ -83,69 +114,6 @@ This Jupyter Notebook is for **interactive experimentation**:
 
 ---
 
-## 🧠 **Training the Model**
-
-### Run the training script:
-```bash
-python src/pca_dbscan_model.py
-```
-
-- **Processes data:** Cleans, scales, and applies PCA.
-- **Clusters data:** Uses DBSCAN to detect patterns and outliers.
-- **Saves model:** Outputs `pca_dbscan_model.pkl` for future predictions.
-
----
-
-## 🔍 **Making Predictions**
-
-### Run the inference script:
-```bash
-python src/pca_dbscan_inference.py
-```
-
-- **Loads the trained model**.
-- **Predicts clusters** for new customer data.
-- **Saves results** in `predicted_clusters.csv`.
-
----
-
-## 📈 **Experimenting with PCA + DBSCAN**
-
-### Open the notebook:
-```bash
-jupyter notebook pcs_dbscan_experiment.ipynb
-```
-
-- **Interactive Analysis:** Play around with PCA components, DBSCAN parameters, and visualize clustering results.
-- **Parameter Tuning:** Fine-tune `eps` and `min_samples` to improve clustering performance.
-
----
-
-## 📈 **Key Features**
-
-- **Unsupervised Learning:** No need for labeled data.
-- **Anomaly Detection:** Identifies unusual consumption patterns.
-- **Reusable Model:** Train once, predict multiple times.
-
----
-
-## 🗂️ **src/ Folder Documentation**
-
-### 1️⃣ **pca_dbscan_model.py**
-- **Functions:**
-  - `load_and_preprocess_data()`: Prepares the dataset.
-  - `build_pipeline()`: Creates the PCA + DBSCAN pipeline.
-  - `train_model()`: Trains the clustering model.
-  - `save_model()`: Saves the trained model.
-
-### 2️⃣ **pca_dbscan_inference.py**
-- **Functions:**
-  - `load_model()`: Loads the trained model.
-  - `load_new_data()`: Processes new consumption data.
-  - `predict_clusters()`: Predicts clusters for new data.
-
----
-
 ## 🚀 **Future Improvements**
 
 - API deployment for real-time predictions.
@@ -163,4 +131,3 @@ Feel free to fork, improve, and submit pull requests. For issues, open a ticket 
 ## 📄 **License**
 
 This project is licensed under the MIT License.
-
